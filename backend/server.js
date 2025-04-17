@@ -15,7 +15,7 @@ connectDB();
 
 const app = express();
 app.use(cors(
-  {origin:'myntra-clone-cc8t.vercel.app'}
+  {origin:'https://myntra-clone-cc8t.vercel.app'}
 ))
 
 
