@@ -14,9 +14,9 @@ const wishlistRoutes = require('./routes/wishlistRoutes');
 connectDB();
 
 const app = express();
-app.use(cors());
 app.use(cors({
-  origin: 'https://myntra-clone-e67v.vercel.app',
+  origin: ['https://myntra-clone-e67v.vercel.app','https://myntra-clone-orcin-delta.vercel.app'] ,
+  
 }));
 app.use(express.json());
 
