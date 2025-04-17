@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import myntralogo from 'C:/Users/afham/myntra-clone/frontend/src/assets/myntralogo.png';
+import myntralogo from '../assets/myntralogo.png';
 import { useContext ,useState} from "react";
 import { CartContext } from "../context/CartContext";
 import { SearchContext } from "../context/SearchContext";
