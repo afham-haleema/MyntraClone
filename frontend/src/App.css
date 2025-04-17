@@ -199,6 +199,14 @@
   font-family: product-de'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+.product-detail-container {
+  display: flex;
+  gap: 3rem;
+  margin: auto;
+  max-width: 90vw;
+  margin-top: 8rem;
+}
+
 .product-image-section img {
   width: 400px;
   border-radius: 10px;
