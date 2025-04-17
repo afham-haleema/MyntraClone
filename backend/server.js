@@ -15,6 +15,9 @@ connectDB();
 
 const app = express();
 app.use(cors());
+app.use(cors({
+  origin: 'https://myntra-clone-e67v.vercel.app',
+}));
 app.use(express.json());
 
 app.use('/api/products', productRoutes);
