@@ -14,17 +14,11 @@ const wishlistRoutes = require('./routes/wishlistRoutes');
 connectDB();
 
 const app = express();
-const allowedOrigins = ['https://myntra-clone-e67v.vercel.app','https://myntra-clone-orcin-delta.vercel.app'];
+app.use(cors(
+  {origin:'myntra-clone-cc8t.vercel.app'}
+))
 
-app.use(cors({
-  origin: function(origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
+
 app.use(express.json());
 
 app.use('/api/products', productRoutes);
