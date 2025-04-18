@@ -35,7 +35,7 @@ const updateUserCart = async (req, res) => {
     // }
 
     if (!cart) {
-      cart = new Cart({ userId, items: [newItem] });
+      cart = new Cart({ user:userId, items: [newItem] });
     } else {
       const existingItemIndex = cart.items.findIndex(
         (item) =>
