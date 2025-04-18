@@ -17,15 +17,36 @@ const getUserCart = async (req, res) => {
 const updateUserCart = async (req, res) => {
   try {
     const userId=req.user._id
-    const { items } = req.body;
-    console.log(userId)
-    console.log("Items to update:", req.body.items); // log
+    // const { items } = req.body;
+    const { productId, quantity, size } = req.body;
+    const newItem = {
+      product: productId,
+      quantity,
+      size,
+    };
+
     let cart = await Cart.findOne({userId});
 
+    // if (!cart) {
+    //   cart = new Cart({ userId, items });
+    // } else {
+    //   cart.items = items; 
+    // }
+
     if (!cart) {
-      cart = new Cart({ userId, items });
+      cart = new Cart({ userId, items: [newItem] });
     } else {
-      cart.items = items; 
+      const existingItemIndex = cart.items.findIndex(
+        (item) =>
+          item.product.toString() === productId &&
+          item.size === size
+      );
+
+      if (existingItemIndex >= 0) {
+        cart.items[existingItemIndex].quantity += quantity;
+      } else {
+        cart.items.push(newItem);
+      }
     }
     await cart.save()
     console.log("Cart after saving:", cart);
