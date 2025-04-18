@@ -1,6 +1,6 @@
 # 🛍️ Myntra Clone – Full Stack E-commerce Website
 
-An elegant full-stack e-commerce application built using the **MERN stack (MongoDB, Express, React, Node.js)**. Users can browse products, add to cart, place orders, and manage their profiles. Admins can manage inventory, view orders, and maintain users.
+An elegant full-stack e-commerce application built using the **MERN stack (MongoDB, Express, React, Node.js)**. Users can browse products, add to cart, place orders, and manage their profiles. 
 
 ---
 
