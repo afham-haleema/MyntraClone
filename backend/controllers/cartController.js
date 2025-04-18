@@ -29,7 +29,6 @@ const updateUserCart = async (req, res) => {
 
     let cart = await Cart.findOne({userId});
     console.log('Creating cart for user ID:', userId);
-    console.log('Cart:', cart);
     // if (!cart) {
     //   cart = new Cart({ userId, items });
     // } else {
@@ -53,6 +52,7 @@ const updateUserCart = async (req, res) => {
         cart.items.push(newItem);
       }
     }
+    console.log('Cart:', cart);
     await cart.save()
     console.log("Cart after saving:", cart);
     res.status(200).json({ message: "Cart updated successfully", cart }); 
