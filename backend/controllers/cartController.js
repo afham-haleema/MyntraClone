@@ -17,6 +17,8 @@ const getUserCart = async (req, res) => {
 const updateUserCart = async (req, res) => {
   try {
     const userId=req.user._id
+    console.log('User ID:', req.user._id);
+    console.log('Request body:', req.body);
     // const { items } = req.body;
     const { productId, quantity, size } = req.body;
     const newItem = {
@@ -26,7 +28,7 @@ const updateUserCart = async (req, res) => {
     };
 
     let cart = await Cart.findOne({userId});
-
+    console.log('Cart:', cart);
     // if (!cart) {
     //   cart = new Cart({ userId, items });
     // } else {
@@ -41,6 +43,8 @@ const updateUserCart = async (req, res) => {
           item.product.toString() === productId &&
           item.size === size
       );
+      console.log('Existing item index:', existingItemIndex);
+
 
       if (existingItemIndex >= 0) {
         cart.items[existingItemIndex].quantity += quantity;
@@ -52,7 +56,7 @@ const updateUserCart = async (req, res) => {
     console.log("Cart after saving:", cart);
     res.status(200).json({ message: "Cart updated successfully", cart }); 
   } catch(err) {
-    console.error("Error updating cart:", err); 
+    console.error("Error updating cart:", err.message); 
     res.status(500).json({ message: "Failed to update cart" });
   }
 };
