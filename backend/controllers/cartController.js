@@ -4,7 +4,7 @@ const Cart=require('../models/Cart')
 const getUserCart = async (req, res) => {
   try {
     const userId=req.user._id
-    const cart = await Cart.findOne({ userId }).populate("items.product");
+    const cart = await Cart.findOne({ user: userId }).populate("items.product");
     if (!cart) return res.status(404).json({ message: "Cart not found" });
     res.json({ items: cart.items });
   } catch(err) {
@@ -17,8 +17,7 @@ const getUserCart = async (req, res) => {
 const updateUserCart = async (req, res) => {
   try {
     const userId=req.user._id
-    console.log('User ID:', req.user._id);
-    console.log('Request body:', req.body);
+
     // const { items } = req.body;
     const { productId, quantity, size } = req.body;
     const newItem = {
@@ -27,7 +26,7 @@ const updateUserCart = async (req, res) => {
       size,
     };
 
-    let cart = await Cart.findOne({userId});
+    let cart = await Cart.findOne({user: userId});
     console.log('Creating cart for user ID:', userId);
     // if (!cart) {
     //   cart = new Cart({ userId, items });
