@@ -49,6 +49,7 @@ function Profile() {
 
     try {
       const res = await axios.post(process.env.REACT_APP_API_URL + endpoint, form);
+      localStorage.setItem('user', JSON.stringify(res.data));
       login(res.data)
       navigate('/')
     } catch (err) {
