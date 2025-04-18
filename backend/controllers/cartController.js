@@ -7,7 +7,7 @@ const getUserCart = async (req, res) => {
     const cart = await Cart.findOne({ userId }).populate("items.product");
     if (!cart) return res.status(404).json({ message: "Cart not found" });
     res.json({ items: cart.items });
-  } catch {
+  } catch(err) {
     console.error("Error fetching cart:", err); 
     res.status(500).json({ message: "Failed to fetch cart" });
   }
