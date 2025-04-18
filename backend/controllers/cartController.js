@@ -28,6 +28,7 @@ const updateUserCart = async (req, res) => {
     };
 
     let cart = await Cart.findOne({userId});
+    console.log('Creating cart for user ID:', userId);
     console.log('Cart:', cart);
     // if (!cart) {
     //   cart = new Cart({ userId, items });
