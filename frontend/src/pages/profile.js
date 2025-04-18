@@ -49,9 +49,16 @@ function Profile() {
 
     try {
       const res = await axios.post(process.env.REACT_APP_API_URL + endpoint, form);
-      localStorage.setItem('user', JSON.stringify(res.data));
-      login(res.data)
-      navigate('/')
+      if (isSignIn) {
+        localStorage.setItem('user', JSON.stringify(res.data));
+        login(res.data);
+        navigate('/');
+        window.location.reload(); 
+      } else {
+        
+        setIsSignIn(true);
+        alert("Account created successfully! Please log in.");
+      }
     } catch (err) {
       alert(err.response?.data?.message || "Something went wrong");
     }
@@ -60,6 +67,7 @@ function Profile() {
   const logout = () => {
     localStorage.removeItem('user')
     setUser(null)
+    window.location.reload()
   }
 
   if (user) {
