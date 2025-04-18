@@ -17,6 +17,7 @@ export function CartProvider({ children }) {
       if (!token) return;
       setLoading(true);
       try {
+        console.log(token)
         const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/cart`, {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -36,7 +37,7 @@ export function CartProvider({ children }) {
   const updateCartOnServer = async (updatedCart) => {
     if (!token) return;
     try {
-      console.log("User ID in cart request:", user?._id);
+      console.log("User ID in cart request:", token);
       await axios.post(
         `${process.env.REACT_APP_API_URL}/api/cart`,
         { items: updatedCart },

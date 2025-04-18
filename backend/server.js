@@ -14,8 +14,9 @@ const wishlistRoutes = require('./routes/wishlistRoutes');
 connectDB();
 
 const app = express();
+// app.use(cors())
 app.use(cors(
-  {origin:'https://myntra-clone-cc8t.vercel.app'}
+  {origin:'https://myntra-clone-cc8t.vercel.app',credentials:false}
 ))
 
 
